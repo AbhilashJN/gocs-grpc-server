@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package players_list;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/players_list";
+
+message PlayersListRequest{}
+
+message PlayersListResponse{
+    repeated string names = 1;
+}
+
+
+service PlayersListService{
+    rpc GetPlayersList (PlayersListRequest) returns (PlayersListResponse);
+}
+

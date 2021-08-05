@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package heatmap;
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/heatmap";
+
+
+message HeatmapRequest{
+    string player=1;
+}
+
+message HeatmapPoint{
+    double X=1;
+    double Y=2;
+}
+
+message HeatmapResponse{
+    repeated HeatmapPoint kill=1;
+    repeated HeatmapPoint death=2;
+    repeated HeatmapPoint bomb_plant=3;
+}
+
+service HeatmapService{
+    rpc GetHeatmapPositions (HeatmapRequest) returns (HeatmapResponse);
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package deaths_summary;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/stats_summary/deaths_summary";
+
+message DeathsSummaryItem{
+    string name=1;     
+	int32 kills=2;
+	int32 deaths=3;
+}
+
+message DeathsSummary {
+ string category = 1;  
+ repeated DeathsSummaryItem items = 2; 
+}
+
+message AllDeathsSummaries {
+    repeated DeathsSummary data=1;
+}

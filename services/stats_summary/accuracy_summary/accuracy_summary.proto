@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package accuracy_summary;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/stats_summary/accuracy_summary";
+
+message AccuracySummaryItem{
+    string name=1;     
+	int32 fired=2;
+	int32 hits=3;
+	string hitPercentage=4;
+	int32 headshots=5;
+}
+
+message AccuracySummary {
+ string category = 1;  
+ repeated AccuracySummaryItem items = 2; 
+}
+
+message AllAccuracySummaries {
+    repeated AccuracySummary data=1;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package map_details;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/map_details";
+
+message MapNameRequest{}
+
+message MapNameResponse{
+    string map_name = 1;
+}
+
+
+service MapDetailsService{
+    rpc GetMapName (MapNameRequest) returns (MapNameResponse);
+}
+

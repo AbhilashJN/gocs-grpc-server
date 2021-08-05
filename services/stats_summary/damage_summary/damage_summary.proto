@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package damage_summary;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/stats_summary/damage_summary";
+
+message DamageSummaryItem{
+    string name=1;     
+	int32 given=2;
+	int32 taken=3;
+}
+
+message DamageSummary {
+ string category = 1;  
+ repeated DamageSummaryItem items = 2; 
+}
+
+message AllDamageSummaries{
+    repeated DamageSummary data=1;
+}

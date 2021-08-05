@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package stats_summary;
+
+option go_package = "github.com/AbhilashJN/gocs-grpc-server/services/stats_summary/stats_summary";
+import "services/stats_summary/accuracy_summary/accuracy_summary.proto";
+import "services/stats_summary/damage_summary/damage_summary.proto";
+import "services/stats_summary/deaths_summary/deaths_summary.proto";
+
+
+message GetStatsSummaryRequest{
+    string player=1;
+    string stat_type=2;
+}
+
+message GetStatsSummaryResponse{
+    repeated string item_fields=1;
+    repeated string comparison_fields=2;
+    oneof data{
+        accuracy_summary.AllAccuracySummaries all_accuracy_summaries = 3;
+        damage_summary.AllDamageSummaries all_damage_summaries = 4;
+        deaths_summary.AllDeathsSummaries all_deaths_summaries = 5;
+    }
+}
+
+service StatsSummaryService{
+    rpc GetStatsSummary (GetStatsSummaryRequest) returns (GetStatsSummaryResponse);
+}
+
